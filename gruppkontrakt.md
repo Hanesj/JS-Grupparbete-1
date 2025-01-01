@@ -81,7 +81,11 @@
 ## **Underskrifter**
 
 - **David Borg**
-- **namn**
-- **namn**
+- **Max**
+- **Jihi**
+- **Hannes**
+- **Manuel**
+- **Erik**
+- **Name**
 
 ---
