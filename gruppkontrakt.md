@@ -4,8 +4,8 @@
 
 ## **Mötesstruktur**
 
-- **Dagliga standups:** Varje dag kl. 13:00. Om det krockar med lektion, hålls mötet 30 minuter innan lektionen.
-- **Måndagsmöte (Planeringsmöte):** Startar 12:30. Under mötet skapar vi en to-do-lista för veckan och planerar arbetet.
+- **Dagliga standups:** Varje dag (Mån-Fre) inte på klass-dagar. Kl. 10.00.
+- **Måndagsmöte (Planeringsmöte):** Startar 10.00. Under mötet skapar vi en to-do-lista för veckan och planerar arbetet.
 
 ---
 
@@ -32,6 +32,11 @@
 ## **Personliga preferenser**
 
 - **David:** Gillar planering och struktur, tycker backend är tråkigt.
+- **Jihi:** Struktur.
+- **Manuel:** Getting things done. Presenting in english
+- **Max:** Struktur, att gå igenom kod, programmera. Gillar inte att gå vidare utan att optimisera projekt så mycket som möjligt.
+- **Hannes:** Bygga nytt och lösa problem. Gillar inte att optimisera/effektivisera.
+- **Erik:** Gillar att förstå koden så bra som möjligt. Gillar inte att sitta fast.
 
 ---
 
@@ -49,7 +54,8 @@
 
 - **Selektorer:** Korta och beskrivande namn.
 - **Språk:** Engelska används konsekvent i koden.
-- **Bindestreck:** Används för att separera ord (ex. `main-header`).
+- **Bindestreck:** Används för att separera ord i HTML och CSS (ex. `main-header`).
+  - För JavaScript använda camelcase (ex. `mainHeader`)
 
 ---
 
