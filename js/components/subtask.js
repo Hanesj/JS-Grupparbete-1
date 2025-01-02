@@ -1,1 +1,3 @@
 Exempel pa komponent.
+
+export ....
