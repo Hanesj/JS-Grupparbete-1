@@ -1,0 +1,1 @@
+Exempel pa komponent.
