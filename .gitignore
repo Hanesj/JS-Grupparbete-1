@@ -1,3 +1,4 @@
 *.map
 style/style.css
 .DS_Store
+.vscode
