@@ -1,0 +1,3 @@
+Exempel pa komponent.
+
+export ....
