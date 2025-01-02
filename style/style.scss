@@ -1,0 +1,13 @@
+* {
+	margin: 0;
+	padding: 0;
+	border: 0;
+
+}
+
+@import 'mobile/mobile.scss';
+
+/* Desktop CSS */
+@media screen and (min-width: 768px) {
+    @import 'desktop/desktop.scss';
+}
