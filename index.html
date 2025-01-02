@@ -1,19 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 	<meta charset="UTF-8">
 	<title>Task-Tracker</title>
 	<link rel='stylesheet' href='style/style.css' type='text/css'>
+	<script src='js/app.js' defer></script>
 </head>
+
 <body>
-	<div>
-		<ul>
-			<li></li>
-			<li></li>
-			<li></li>
-			<li></li>
-			<li></li>
-		</ul>
-	</div>
+	<header>
+		<h1>Task Handler</h1>
+	</header>
+
+	<main>
+		<section class="task-table">
+			<table>
+				<thead>
+					<tr>
+						<th>Task</th>
+						<th>Deadline</th>
+						<th>Status</th>
+						<th>Prio</th>
+						<th>Added</th>
+						<th>Remove</th>
+					</tr>
+				</thead>
+				<tbody>
+					<!-- Task rows will be dynamically added here -->
+				</tbody>
+			</table>
+		</section>
+		<button type="submit">+ Add Task</button>
+
+		<section class="add-task">
+			<!-- Set this section to hidden by default and set to visible when "+ Add Task" button is clicked -->
+			<form id="add-task-form">
+				<label for="task">Task:</label>
+				<input type="text" id="task" name="task" required>
+
+				<label for="deadline">Deadline:</label>
+				<input type="date" id="deadline" name="deadline" required>
+
+				<label for="status">Status:</label>
+				<select id="status" name="status">
+					<option value="not-started">Not Started</option>
+					<option value="in-progress">In Progress</option>
+					<option value="completed">Completed</option>
+				</select>
+
+				<label for="prio">Prio:</label>
+				<select id="prio" name="prio">
+					<option value="low">Low</option>
+					<option value="medium">Medium</option>
+					<option value="high">High</option>
+				</select>
+
+				<button type="submit">Add</button>
+			</form>
+		</section>
+
+		<section class="delete-all">
+			<button id="delete-all">Remove all</button>
+		</section>
+	</main>
+
+	<footer>
+		<p>&copy; 2025 Task Handler</p>
+	</footer>
+
 </body>
+
 </html>
