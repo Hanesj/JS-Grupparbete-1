@@ -3,8 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <title>Task-Tracker</title>
-    <link rel="stylesheet" href="style/style.css" type="text/css" />
-    <script src="js/app.js" defer></script>
+    <script type="module" src="js/app.js" defer></script>
   </head>
 
   <body>
@@ -13,6 +12,7 @@
     </header>
 
     <main>
+      <!-- Task Table -->
       <section class="task-table">
         <table>
           <thead>
@@ -21,12 +21,11 @@
               <th>Deadline</th>
               <th>Status</th>
               <th>Prio</th>
-              <th>Added</th>
               <th>Subtasks</th>
               <th>Remove</th>
             </tr>
           </thead>
-          <tbody></tbody>
+          <tbody id="task-table-body"></tbody>
         </table>
       </section>
 
@@ -53,14 +52,6 @@
           </select>
 
           <button id="add-task-btn" type="button">Add Task</button>
-        </form>
-      </section>
-
-      <section class="add-subtask">
-        <form id="add-subtask-form" style="display: none">
-          <label for="subtask">Subtask:</label>
-          <input type="text" id="subtask" name="subtask" required />
-          <button id="add-subtask-btn" type="button">Add Subtask</button>
         </form>
       </section>
     </main>
