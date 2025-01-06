@@ -1,0 +1,17 @@
+/***GRID CONTAINER AND MAIN WRAPPER GRID CONTAINER AND MAIN WRAPPER GRID CONTAINER AND MAIN WRAPPER***/
+.grid-container {
+    background: #eee;
+    max-width: 100%;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: 100px auto 100px;
+	background-color: #b095ff;
+	border-radius: 10px;
+	box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.main-wrapper {
+	grid-column: 1 / span 12;
+
+}
