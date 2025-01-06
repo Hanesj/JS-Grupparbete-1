@@ -1,3 +1,6 @@
-body {
-	@import 'components/mobile-body.scss';
-}
+@import 'components/mobile-body.scss';
+@import 'components/mobile-grid-container';
+@import 'components/mobile-header';
+@import 'components/mobile-table-and-input-fields';
+@import 'components/mobile-footer';
+@import 'components/mobile-add-button';
