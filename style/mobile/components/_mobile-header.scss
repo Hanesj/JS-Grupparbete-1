@@ -1,0 +1,19 @@
+/***HEADER STYLING HEADER STYLING HEADER STYLING HEADER STYLING HEADER STYLING ***/
+
+header {
+	display: grid;
+	grid-column: 1 / span 12;
+	align-items: center;
+	text-align: center;
+
+}
+
+header h1 {
+	font-size: 2.5rem;
+	color: white;
+	font-family: "Montserrat", serif;
+	font-optical-sizing: auto;
+	font-weight: 600;
+	font-style: normal;
+	text-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
