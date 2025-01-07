@@ -86,6 +86,6 @@
 - **Hannes**
 - **Manuel**
 - **Erik**
-- **Name**
+- **Philip**
 
 ---
