@@ -1,77 +1,97 @@
 /*** TABEL AND INPUTFIELDS **/
 
-  
-  /***INPUT OCH TEXTFIELDS INPUT OCH TEXTFIELDS INPUT OCH TEXTFIELDS***/
-  table input,
-	select {
+/***INPUT OCH TEXTFIELDS INPUT OCH TEXTFIELDS INPUT OCH TEXTFIELDS***/
+table select {
 	color: #858585;
 	width: 100%;
 	padding: 5px;
 	font-size: 1rem;
 	border: 1px solid #ccc;
 	border-radius: 5px;
-  }
+	background-color: white;
+}
 
-  
-  /***FOCUS AND INPUT***/
-  table input:focus,
-  table select:focus {
-	border-color: #dadada;  /* Border on focus*/
+table input {
+	color: #858585;
+	width: 100%;
+	padding: 5px;
+	font-size: 1rem;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	background-color: white;
+}
+.dead-line-input {
+	width: 80%;
+	background: whitesmoke;
+}
+/***FOCUS AND INPUT***/
+table input:focus,
+table select:focus {
+	border-color: #dadada; /* Border on focus*/
 	outline: none;
-  }
-  
-  
-
+}
 
 /***TABLE STYLING TABLE STYLING TABLE STYLING TABLE STYLING***/
-  table {
-	width: 100%; 
+table {
+	width: 100%;
 	border-collapse: collapse;
 	font-size: 1rem;
 	background-color: rgb(53, 181, 255);
-	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
-  }
-  
-  th,
-  td {
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+th,
+td {
 	color: white;
 	margin: 0px;
 	padding: 12px;
 	text-align: left;
-	border-bottom: 1px solid #ddd;  /***BORDER BETWEEN ROWS***/
-  }
-  
-  th {
-	margin:0px;
-	color:#fbfafa;
-	font-size:1.3rem;
-	font-family: "Montserrat", serif;
+	border-bottom: 1px solid #ddd; /***BORDER BETWEEN ROWS***/
+}
+
+th {
+	margin: 0px;
+	color: #fbfafa;
+	font-size: 1.3rem;
+	font-family: 'Montserrat', serif;
 	font-optical-sizing: auto;
 	font-weight: 600;
 	font-style: normal;
 	text-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
-	background-color: #c0aaff;  /* Green header background */
+	background-color: #c0aaff; /* Green header background */
+	~ .sub-th {
+		display: none;
+	}
+}
+//-----------Task color--------------//
+tbody tr:nth-child(even) {
+	background-color: #c0aaff; /* COLOR FOR EVEN ROWS */
+}
 
-  }
-  
-  tbody tr:nth-child(even) {
-	background-color: #c0aaff;  /* COLOR FOR EVEN ROWS */
-  }
-  
-  tbody tr:nth-child(odd) {
-	background-color: #b69efa;  /* COLOR FOR ODD ROWS */ 
-  }
+tbody tr:nth-child(odd) {
+	background-color: #b69efa; /* COLOR FOR ODD ROWS */
+}
 
-  tbody td:nth-child(5) { 		/* CENTER ALIGN TEXT FOR LAST TWO TABLE HEADERS */
+tbody td:nth-child(6) {
+	/* CENTER ALIGN TEXT FOR LAST TWO TABLE HEADERS */
 	text-align: center;
-  }
-  tbody td:nth-child(4) {
+}
+tbody td:nth-child(5) {
 	text-align: center;
-  }
+}
 
-  thead th:nth-child(5) {
+thead th:nth-child(6) {
 	text-align: center;
-  }
-  thead th:nth-child(4) {
+}
+thead th:nth-child(5) {
 	text-align: center;
-  }
+}
+
+//-----------Subtask Color----------------//
+.subba1 {
+	background: #e8c4d8; /* COLOR FOR EVEN ROWS */
+}
+
+.subba2 {
+	background: #d9b2cb; /* COLOR FOR ODD ROWS */
+}
