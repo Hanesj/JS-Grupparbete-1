@@ -8,7 +8,8 @@
 
     <link
       href="https://fonts.googleapis.com/css2?family=Montserrat:ital@0;1&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap"
-      rel="stylesheet" />
+      rel="stylesheet"
+    />
   </head>
 
   <body>
@@ -26,18 +27,16 @@
                 <th><label for="deadline">Deadline</label></th>
                 <th><label for="status">Status</label></th>
                 <th><label for="prio">Prio</label></th>
-                <th>Remove</th>
+                <th>Actions</th>
               </tr>
             </thead>
             <tbody>
-
-              <!--ROW WITH INPUT FIELDS IN TABLE-->
-                <td>
-                  <input type="text" id="task" name="task" required />
-                </td>
-                <td>
-              <input type="date" id="deadline" name="deadline" required />
-                </td>
+              <!-- Task rows and subtask containers will be dynamically added here -->
+            </tbody>
+            <tfoot>
+              <tr>
+                <td><input type="text" id="task" name="task" required /></td>
+                <td><input type="date" id="deadline" name="deadline" required /></td>
                 <td>
                   <select id="status" name="status">
                     <option value="not-started">Not Started</option>
@@ -53,15 +52,14 @@
                   </select>
                 </td>
                 <td>
-                  <button type="submit">Add</button>
+                  <button type="submit">Add Task</button>
                 </td>
               </tr>
-            </tbody>
+            </tfoot>
           </table>
         </section>
       </main>
 
-      <!--FOOTER-->
       <footer>
         <p>&copy; 2025 Task Handler</p>
       </footer>

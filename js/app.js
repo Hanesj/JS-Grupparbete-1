@@ -1,37 +1,32 @@
 document.addEventListener("DOMContentLoaded", function () {
-  // References to DOM elements
   const taskTableBody = document.querySelector("tbody");
-  const addButton = document.querySelector("table button");
+  const addButton = document.querySelector("table tfoot button");
   const taskInput = document.getElementById("task");
   const deadlineInput = document.getElementById("deadline");
   const statusInput = document.getElementById("status");
   const prioInput = document.getElementById("prio");
 
-  // Event listener for the "Add" button
+  // Add a new task when the "Add Task" button is clicked
   addButton.addEventListener("click", function (event) {
     event.preventDefault();
 
-    // Validate input fields
     if (!taskInput.value.trim() || !deadlineInput.value || !statusInput.value || !prioInput.value) {
       alert("Please fill in all fields.");
       return;
     }
 
-    // Add a new row to the table
     addTaskRow(taskInput.value.trim(), deadlineInput.value, statusInput.value, prioInput.value);
 
-    // Reset input fields
     taskInput.value = "";
     deadlineInput.value = "";
     statusInput.value = "not-started";
     prioInput.value = "low";
   });
 
-  // Function to add a new task row
+  // Function to add a main task row with a subtask container
   function addTaskRow(task, deadline, status, prio) {
     const row = document.createElement("tr");
 
-    // Populate the row with data and the "Remove" button
     row.innerHTML = `
       <td>${task}</td>
       <td>${deadline}</td>
@@ -39,32 +34,74 @@ document.addEventListener("DOMContentLoaded", function () {
       <td>${capitalizeWords(prio)}</td>
       <td>
         <button class="remove-btn">X</button>
+        <button class="add-subtask-btn">+</button>
       </td>
     `;
 
-    // Append the new row to the body
     taskTableBody.appendChild(row);
 
-    // Add event listener for the "Remove" button
+    const subtaskRow = document.createElement("tr");
+    subtaskRow.classList.add("subtask-container", "hidden");
+    subtaskRow.innerHTML = `
+      <td colspan="5">
+        <div>
+          <input type="text" class="subtask-input" placeholder="Add subtask..." />
+          <button class="add-subtask-action-btn">Add Subtask</button>
+        </div>
+        <ul class="subtask-list"></ul>
+      </td>
+    `;
+
+    taskTableBody.appendChild(subtaskRow);
+
     row.querySelector(".remove-btn").addEventListener("click", function () {
       row.remove();
+      subtaskRow.remove();
+    });
+
+    row.querySelector(".add-subtask-btn").addEventListener("click", function () {
+      toggleSubtaskContainer(subtaskRow);
     });
   }
 
-  // Utility function to capitalize words (e.g., "not-started" -> "Not Started")
+  // Function to toggle the visibility of the subtask container
+  function toggleSubtaskContainer(container) {
+    container.classList.toggle("hidden");
+  }
+
+  // Function to add a subtask to the specific task
+  taskTableBody.addEventListener("click", function (event) {
+    if (event.target.classList.contains("add-subtask-action-btn")) {
+      const subtaskContainer = event.target.closest(".subtask-container");
+      const input = subtaskContainer.querySelector(".subtask-input");
+      const subtaskList = subtaskContainer.querySelector(".subtask-list");
+
+      const subtaskValue = input.value.trim();
+      if (!subtaskValue) {
+        alert("Please enter a valid subtask.");
+        return;
+      }
+
+      const subtaskItem = document.createElement("li");
+      subtaskItem.innerHTML = `
+        ${subtaskValue}
+        <button class="remove-subtask-btn">Remove</button>
+      `;
+
+      subtaskList.appendChild(subtaskItem);
+      input.value = "";
+    }
+
+    if (event.target.classList.contains("remove-subtask-btn")) {
+      event.target.closest("li").remove();
+    }
+  });
+
+  // Utility function to capitalize words
   function capitalizeWords(str) {
     return str
       .split("-")
       .map(word => word.charAt(0).toUpperCase() + word.slice(1))
       .join(" ");
   }
-
-  // Example tasks
-  const exampleTasks = [
-    { task: "Legalisera", deadline: "2025-05-10", status: "in-progress", prio: "high" },
-    { task: "Börjar i skolan", deadline: "2025-05-15", status: "not-started", prio: "medium" },
-  ];
-
-  // Populate the table with example tasks
-  exampleTasks.forEach(task => addTaskRow(task.task, task.deadline, task.status, task.prio));
 });
