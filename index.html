@@ -3,90 +3,68 @@
   <head>
     <meta charset="UTF-8" />
     <title>Task-Tracker</title>
+    <script type="module" src="js/app.js" defer></script>
+    <script
+      src="https://kit.fontawesome.com/55174c58a9.js"
+      crossorigin="anonymous"></script>
     <link rel="stylesheet" href="style/style.css" type="text/css" />
-    <script src="js/app.js" defer></script>
-
     <link
       href="https://fonts.googleapis.com/css2?family=Montserrat:ital@0;1&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap"
       rel="stylesheet" />
   </head>
 
   <body>
-    <div class="grid-container">
-      <header>
-        <h1>TASK HANDLER</h1>
-      </header>
+    <header>
+      <h1>Task Handler</h1>
+    </header>
 
-      <main class="main-wrapper">
-        <section>
-          <table>
-            <thead>
-              <tr>
-                <th><label for="task">Task</label></th>
-                <th><label for="deadline">Deadline</label></th>
-                <th><label for="status">Status</label></th>
-                <th><label for="prio">Prio</label></th>
-                <th>Remove</th>
-              </tr>
-            </thead>
-            <tbody>
-              <!-- Task rows will be dynamically added here -->
-              <tr>
-                <td>Legalisera</td>
-                <td>2025-05-10</td>
-                <td>Pågående</td>
-                <td>1</td>
-                <td>X</td>
-              </tr>
-              <tr>
-                <td>Legalisera</td>
-                <td>2025-05-10</td>
-                <td>Pågående</td>
-                <td>1</td>
-                <td>X</td>
-              </tr>
-              <tr>
-                <td>Börjar i skolan</td>
-                <td>2025-05-10</td>
-                <td>Pågående</td>
-                <td>1</td>
-                <td>X</td>
-              </tr>
+    <main>
+      <!-- Task Table -->
+      <section class="task-table">
+        <table>
+          <thead>
+            <tr>
+              <th>Task</th>
+              <th>Deadline</th>
+              <th>Status</th>
+              <th>Prio</th>
+              <th>Remove</th>
+              <th>Subtasks</th>
+            </tr>
+          </thead>
+          <tbody id="task-table-body"></tbody>
+        </table>
+      </section>
 
-              <!--ROW WITH INPUT FIELDS IN TABLE-->
-                <td>
-                  <input type="text" id="task" name="task" required />
-                </td>
-                <td>
-              <input type="date" id="deadline" name="deadline" required />
-                </td>
-                <td>
-                  <select id="status" name="status">
-                    <option value="not-started">Not Started</option>
-                    <option value="in-progress">In Progress</option>
-                    <option value="completed">Completed</option>
-                  </select>
-                </td>
-                <td>
-                  <select id="prio" name="prio">
-                    <option value="low">Low</option>
-                    <option value="medium">Medium</option>
-                    <option value="high">High</option>
-                  </select>
-                </td>
-                <td>
-                  <button type="submit">Add</button>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </section>
-      </main>
+      <section class="add-task">
+        <form id="add-task-form">
+          <label for="task">Task:</label>
+          <input type="text" id="task" name="task" required />
 
-      <!--FOOTER-->
-      <footer>
-        <p>&copy; 2025 Task Handler</p>
-      </footer>
-    </div>
+          <label for="deadline">Deadline:</label>
+          <input type="date" id="deadline" name="deadline" required />
+
+          <label for="status">Status:</label>
+          <select id="status" name="status">
+            <option value="not-started">Not Started</option>
+            <option value="in-progress">In Progress</option>
+            <option value="completed">Completed</option>
+          </select>
+
+          <label for="prio">Prio:</label>
+          <select id="prio" name="prio">
+            <option value="low">Low</option>
+            <option value="medium">Medium</option>
+            <option value="high">High</option>
+          </select>
+
+          <button id="add-task-btn" type="button">Add Task</button>
+        </form>
+      </section>
+    </main>
+
+    <footer>
+      <p>&copy; 2025 Task Handler</p>
+    </footer>
   </body>
 </html>
