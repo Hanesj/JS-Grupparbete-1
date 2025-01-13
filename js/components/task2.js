@@ -174,5 +174,5 @@ const createSubRow = (e) => {
 //btn.addEventListener('click', () => addTask());
 btn.addEventListener('click', addTask);
 //testCase.addEventListener('click', () => createSubTask(newRow));
-//sBtn.addEventListener('click', createSubRow);
-tableBody.addEventListener('click', createSubRow);
+sBtn.addEventListener('click', createSubRow);
+//tableBody.addEventListener('click', createSubRow);
