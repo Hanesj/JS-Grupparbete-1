@@ -1,5 +1,5 @@
 /*** ADD BUTTON STYLING ADD BUTTON STYLING ADD BUTTON STYLING ADD BUTTON STYLING  ***/
-table button {
+/*table button {
 	background-color: #11aa16;
 	color: white;
 	padding: 7px;
@@ -9,9 +9,21 @@ table button {
 	cursor: pointer;
 	width: 100%;
 	transition: background-color 0.3s ease;
-  }
-  
-  /***ADD BUTTON HOVER EFFECT ***/
-  table button:hover {
+}
+*/
+/***ADD BUTTON HOVER EFFECT ***/
+table button:hover {
 	background-color: #41b647;
-  }
+}
+
+.table-button {
+	background-color: #11aa16;
+	color: white;
+	padding: 7px;
+	font-size: 1rem;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+	width: 100%;
+	transition: background-color 0.3s ease;
+}

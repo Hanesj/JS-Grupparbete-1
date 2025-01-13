@@ -2,12 +2,15 @@
 	margin: 0;
 	padding: 0;
 	border: 0;
-
 }
-
 @import 'mobile/mobile.scss';
 
 /* Desktop CSS */
 @media screen and (min-width: 768px) {
-    @import 'desktop/desktop.scss';
+	/***GRID CONTAINER AND MAIN WRAPPER GRID CONTAINER AND MAIN WRAPPER GRID CONTAINER AND MAIN WRAPPER***/
+	.grid-container {
+		max-width: 90%;
+	}
 }
+
+/*# sourceMappingURL=style.scss.map */
