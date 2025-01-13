@@ -1,0 +1,25 @@
+{
+  "name": "js-grupparbete-1",
+  "version": "1.0.0",
+  "description": "Repo för grupparbete javascript.",
+  "main": "calender.js",
+  "scripts": {
+  "test": "vitest",
+  "test:ui": "vitest --ui"
+},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Hanesj/JS-Grupparbete-1.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Hanesj/JS-Grupparbete-1/issues"
+  },
+  "homepage": "https://github.com/Hanesj/JS-Grupparbete-1#readme",
+  "devDependencies": {
+    "@vitest/ui": "^2.1.8",
+    "vitest": "^2.1.8"
+  }
+}
