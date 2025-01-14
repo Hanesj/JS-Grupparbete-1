@@ -15,14 +15,18 @@ const subTask = document.querySelector('#subTask');
 //Subtask input vars
 
 // Klonar inputs för subtask rows ...
-const sTask = taskInput.cloneNode(true);
-const sDeadline = deadlineInput.cloneNode(true);
-const sStatus = statusInput.cloneNode(true);
-const sPrio = prioInput.cloneNode(true);
-const sBtn = btn.cloneNode(true);
+const sBtn = btn ? btn.cloneNode(true) : null;
+const sTask = taskInput ? taskInput.cloneNode(true) : null;
+const sDeadline = deadlineInput ? deadlineInput.cloneNode(true) : null;
+const sStatus = statusInput ? statusInput.cloneNode(true) : null;
+const sPrio = prioInput ? prioInput.cloneNode(true) : null;
 
+// Kontrollera om kloningen misslyckades
+if (!sTask || !sDeadline || !sStatus || !sPrio) {
+	console.error('Ett eller flera inputfält kunde inte klonas.');
+}
 // Lägger till task till table ...
-const addTask = () => {
+export const addTask = () => {
 	//task = console.log(allInput);
 	const allInput = {
 		Task: taskInput.value,
@@ -172,84 +176,82 @@ const createSubRow = (e) => {
 };*/
 
 //btn.addEventListener('click', () => addTask());
-btn.addEventListener('click', addTask);
-//testCase.addEventListener('click', () => createSubTask(newRow));
-sBtn.addEventListener('click', createSubRow);
-//tableBody.addEventListener('click', createSubRow);
-
 // New code to be able to change a task after its added
 const makeRowEditable = (row) => {
 	// Get all cells in the row
 	const cells = row.querySelectorAll('td');
-  
+
 	// Save the original values in case of cancel
 	const originalValues = [...cells].map((cell) => cell.textContent);
-  
+
 	// Replace each cell content with an input field
 	cells.forEach((cell, index) => {
-	  if (index < cells.length - 1) {
-		const input = document.createElement('input');
-		input.type = 'text';
-		input.value = cell.textContent.trim();
-		cell.textContent = '';
-		cell.appendChild(input);
-	  }
+		if (index < cells.length - 1) {
+			const input = document.createElement('input');
+			input.type = 'text';
+			input.value = cell.textContent.trim();
+			cell.textContent = '';
+			cell.appendChild(input);
+		}
 	});
-  
 
-	
 	// Add Save and Cancel buttons
 	const actionCell = cells[cells.length - 1];
 	actionCell.innerHTML = '';
-  
+
 	const saveButton = document.createElement('button');
 	saveButton.textContent = 'Save';
 	saveButton.className = 'table-button';
 
-  
 	const cancelButton = document.createElement('button');
 	cancelButton.textContent = 'Cancel';
 	cancelButton.className = 'table-button';
 	cancelButton.style.background = 'grey';
-  
+
 	actionCell.appendChild(saveButton);
 	actionCell.appendChild(cancelButton);
-  
+
 	// Save Changes
 	saveButton.addEventListener('click', () => {
-	  cells.forEach((cell, index) => {
-		if (index < cells.length - 1) {
-		  const input = cell.querySelector('input');
-		  cell.textContent = input.value;
-		}
-	  });
-  
-	  // Restore original buttons
-	  actionCell.innerHTML = '';
-	  actionCell.appendChild(createButton(row));
+		cells.forEach((cell, index) => {
+			if (index < cells.length - 1) {
+				const input = cell.querySelector('input');
+				cell.textContent = input.value;
+			}
+		});
+
+		// Restore original buttons
+		actionCell.innerHTML = '';
+		actionCell.appendChild(createButton(row));
 	});
-  
+
 	// Cancel Changes
 	cancelButton.addEventListener('click', () => {
-	  cells.forEach((cell, index) => {
-		if (index < cells.length - 1) {
-		  cell.textContent = originalValues[index];
-		}
-	  });
-  
-	  // Restore original buttons
-	  actionCell.innerHTML = '';
-	  actionCell.appendChild(createButton(row));
+		cells.forEach((cell, index) => {
+			if (index < cells.length - 1) {
+				cell.textContent = originalValues[index];
+			}
+		});
+
+		// Restore original buttons
+		actionCell.innerHTML = '';
+		actionCell.appendChild(createButton(row));
 	});
-  };
-  
-  // Add click listener to task name cells
-  tableBody.addEventListener('click', (event) => {
-	const target = event.target;
-  
-	// Check if the clicked cell is a task name
-	if (target.tagName === 'TD' && target.cellIndex === 0) {
-	  const row = target.parentElement;
-	  makeRowEditable(row);
-	}
-  });
+};
+
+document.addEventListener('DOMContentLoaded', () => {
+	// Add click listener to task name cells
+	tableBody.addEventListener('click', (event) => {
+		const target = event.target;
+
+		// Check if the clicked cell is a task name
+		if (target.tagName === 'TD' && target.cellIndex === 0) {
+			const row = target.parentElement;
+			makeRowEditable(row);
+		}
+	});
+	btn.addEventListener('click', addTask);
+	//testCase.addEventListener('click', () => createSubTask(newRow));
+	sBtn.addEventListener('click', createSubRow);
+	//tableBody.addEventListener('click', createSubRow);
+});
