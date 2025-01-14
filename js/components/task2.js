@@ -26,7 +26,7 @@ if (!sTask || !sDeadline || !sStatus || !sPrio) {
 	console.error('Ett eller flera inputfält kunde inte klonas.');
 }
 // Lägger till task till table ...
-export const addTask = () => {
+const addTask = () => {
 	//task = console.log(allInput);
 	const allInput = {
 		Task: taskInput.value,
@@ -112,7 +112,7 @@ const createSubTask = (row) => {
 */ //console.log(newRow.rowIndex);
 };
 
-export const createRow = (values) => {
+const createRow = (values) => {
 	const row = document.createElement('tr');
 	//const subTaskbtn = createSubTaskBtn(row);
 	for (const [key, value] of Object.entries(values)) {
@@ -134,11 +134,14 @@ export const createRow = (values) => {
 
 	btnCell.appendChild(createButton(row));
 	row.appendChild(btnCell);
-	if (inputRow !== null) {
+	if (inputRow) {
+		// inputRow finns, vi kan använda det
 		tableBody.insertBefore(row, inputRow);
 	} else {
-		tableBody.lastChild = inputRow;
+		// inputRow finns inte, vi hanterar det här
+		console.error('inputRow saknas i DOM.');
 	}
+	//tableBody.insertBefore(row, inputRow);
 };
 const createSubRow = (e) => {
 	const subAllInput = {
@@ -259,3 +262,5 @@ document.addEventListener('DOMContentLoaded', () => {
 	sBtn.addEventListener('click', createSubRow);
 	//tableBody.addEventListener('click', createSubRow);
 });
+
+export { createRow, addTask };
