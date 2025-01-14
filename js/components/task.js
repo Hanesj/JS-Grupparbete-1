@@ -170,4 +170,7 @@ const makeRowEditable = (row) => {
   });
 };
 
-// BORTTAGET: Flyttade tableBody event listener till initElements funktionen
+// Initiera Task Manager när dokumentet är klart
+if (typeof document !== 'undefined') {
+  initTaskManager();
+}
