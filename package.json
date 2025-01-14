@@ -4,9 +4,9 @@
   "description": "Repo för grupparbete javascript.",
   "main": "calender.js",
   "scripts": {
-  "test": "vitest",
-  "test:ui": "vitest --ui"
-},
+    "test": "vitest",
+    "test:ui": "vitest --ui"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Hanesj/JS-Grupparbete-1.git"
@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/Hanesj/JS-Grupparbete-1#readme",
   "devDependencies": {
+    "@happy-dom/global-registrator": "^16.5.3",
     "@vitest/ui": "^2.1.8",
     "vitest": "^2.1.8"
   }
