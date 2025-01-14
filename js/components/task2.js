@@ -112,29 +112,33 @@ const createSubTask = (row) => {
 */ //console.log(newRow.rowIndex);
 };
 
-const createRow = (values) => {
+export const createRow = (values) => {
 	const row = document.createElement('tr');
 	//const subTaskbtn = createSubTaskBtn(row);
 	for (const [key, value] of Object.entries(values)) {
 		if (key === 'Deadline') {
-			subBtnCell = document.createElement('td');
+			const subBtnCell = document.createElement('td');
 			subBtnCell.appendChild(createSubTaskBtn(row));
 			row.appendChild(subBtnCell);
 		}
 		if (value === '') {
-			//alert(`${key} cant be empty.`);
-			//return;
+			alert(`${key} cant be empty.`);
+			return;
 		} else {
 			const cell = document.createElement('td');
 			cell.appendChild(document.createTextNode(value));
 			row.appendChild(cell);
 		}
 	}
-	btnCell = document.createElement('td');
+	const btnCell = document.createElement('td');
 
 	btnCell.appendChild(createButton(row));
 	row.appendChild(btnCell);
-	tableBody.insertBefore(row, inputRow);
+	if (inputRow !== null) {
+		tableBody.insertBefore(row, inputRow);
+	} else {
+		tableBody.lastChild = inputRow;
+	}
 };
 const createSubRow = (e) => {
 	const subAllInput = {
