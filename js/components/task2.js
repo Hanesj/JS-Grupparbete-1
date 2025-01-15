@@ -200,6 +200,7 @@ const makeRowEditable = (row) => {
   // Save the original values in case of cancel
   const originalValues = [...cells].map((cell) => cell.textContent);
 
+  console.log('originalValues', originalValues);
   // Replace each cell content with an input field
   cells.forEach((cell, index) => {
     if (index < cells.length - 1) {
@@ -227,14 +228,35 @@ const makeRowEditable = (row) => {
   actionCell.appendChild(saveButton);
   actionCell.appendChild(cancelButton);
 
+  const removeTaskObject = {
+    Task: originalValues[0],
+    Deadline: originalValues[2],
+    Status: originalValues[3],
+    Prio: originalValues[4],
+  };
+
+  let inputData = [];
+
   // Save Changes
   saveButton.addEventListener('click', () => {
     cells.forEach((cell, index) => {
       if (index < cells.length - 1) {
         const input = cell.querySelector('input');
         cell.textContent = input.value;
+        inputData.push(input.value);
       }
     });
+
+    const taskObject = {
+      Task: inputData[0],
+      Deadline: inputData[2],
+      Status: inputData[3],
+      Prio: inputData[4],
+    };
+
+
+    removeFromStorage(removeTaskObject);
+    addToStorage(taskObject);
 
     // Restore original buttons
     actionCell.innerHTML = '';
