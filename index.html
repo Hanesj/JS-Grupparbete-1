@@ -1,134 +1,120 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<title>Task-Tracker</title>
-		<link rel="stylesheet" href="style/style.css" type="text/css" />
-		<script src="js/components/task2.js" defer></script>
 
-		<link
-			href="https://fonts.googleapis.com/css2?family=Montserrat:ital@0;1&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap"
-			rel="stylesheet" />
-	</head>
+<head>
+	<meta charset="UTF-8" />
+	<title>Task-Tracker</title>
+	<link rel="stylesheet" href="style/style.css" type="text/css" />
+	<script src="js/components/storage.js" defer></script>
+	<script src="js/components/task2.js" defer></script>
 
-	<body>
-		<div class="grid-container">
-			<header>
-				<h1>TASK HANDLER</h1>
-			</header>
+	<link
+		href="https://fonts.googleapis.com/css2?family=Montserrat:ital@0;1&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap"
+		rel="stylesheet" />
+</head>
 
-			<main class="main-wrapper">
-				<section>
-					<table>
-						<thead>
-							<tr>
-								<th><label for="task">Task</label></th>
-								<th></th>
-								<th><label for="deadline">Deadline</label></th>
-								<th><label for="status">Status</label></th>
-								<th><label for="prio">Prio</label></th>
-								<th>Remove</th>
-							</tr>
-						</thead>
-						<tbody>
-							<!-- Task rows will be dynamically added here -->
-							<tr>
-								<td>Legalisera</td>
-								<td>+</td>
-								<td>2025-05-10</td>
-								<td>Pågående</td>
-								<td>1</td>
-								<td>X</td>
-							</tr>
-							<tr>
-								<td>Legalisera</td>
-								<td>+</td>
-								<td>2025-05-10</td>
-								<td>Pågående</td>
-								<td>1</td>
-								<td>X</td>
-							</tr>
-							<tr>
-								<td>Börjar i skolan</td>
-								<td>
-									<button class="table-button" id="testCase">
-										+
-									</button>
-								</td>
-								<td>2025-05-10</td>
-								<td>Pågående</td>
-								<td>1</td>
-								<td>
-									<button
-										id="testCase"
-										class="table-button"
-										style="
+<body>
+	<div class="grid-container">
+		<header>
+			<h1>TASK HANDLER</h1>
+		</header>
+
+		<main class="main-wrapper">
+			<section>
+				<table>
+					<thead>
+						<tr>
+							<th><label for="task">Task</label></th>
+							<th></th>
+							<th><label for="deadline">Deadline</label></th>
+							<th><label for="status">Status</label></th>
+							<th><label for="prio">Prio</label></th>
+							<th>Remove</th>
+						</tr>
+					</thead>
+					<tbody>
+						<!-- Task rows will be dynamically added here -->
+						<tr>
+							<td>Legalisera</td>
+							<td>+</td>
+							<td>2025-05-10</td>
+							<td>Pågående</td>
+							<td>1</td>
+							<td>X</td>
+						</tr>
+						<tr>
+							<td>Legalisera</td>
+							<td>+</td>
+							<td>2025-05-10</td>
+							<td>Pågående</td>
+							<td>1</td>
+							<td>X</td>
+						</tr>
+						<tr>
+							<td>Börjar i skolan</td>
+							<td>
+								<button class="table-button" id="testCase">
+									+
+								</button>
+							</td>
+							<td>2025-05-10</td>
+							<td>Pågående</td>
+							<td>1</td>
+							<td>
+								<button id="testCase" class="table-button" style="
 											background: red;
 											border-radius: 0px;
 										">
-										Remove
-									</button>
-								</td>
-							</tr>
+									Remove
+								</button>
+							</td>
+						</tr>
 
-							<!--ROW WITH INPUT FIELDS IN TABLE-->
-							<tr id="inputRow">
-								<td>
-									<input
-										type="text"
-										id="task"
-										name="task"
-										required />
-								</td>
-								<td id="subTask"></td>
-								<td>
-									<input
-										class="dead-line-input"
-										type="date"
-										id="deadline"
-										name="deadline"
-										required />
-								</td>
-								<td>
-									<select id="status" name="status">
-										<option
-											value="Not started"
-											selected="true">
-											Not Started
-										</option>
-										<option value="In Progress">
-											In Progress
-										</option>
-										<option value="Completed">
-											Completed
-										</option>
-									</select>
-								</td>
-								<td>
-									<select id="prio" name="prio">
-										<option value="Low">Low</option>
-										<option value="Medium">Medium</option>
-										<option value="High">High</option>
-									</select>
-								</td>
-								<td>
-									<button
-										type="submit"
-										id="submitBtn"
-										class="table-button">
-										Add
-									</button>
-								</td>
-							</tr>
-						</tbody>
-					</table>
-				</section>
-			</main>
+						<!--ROW WITH INPUT FIELDS IN TABLE-->
+						<tr id="inputRow">
+							<td>
+								<input type="text" id="task" name="task" required />
+							</td>
+							<td id="subTask"></td>
+							<td>
+								<input class="dead-line-input" type="date" id="deadline" name="deadline" required />
+							</td>
+							<td>
+								<select id="status" name="status">
+									<option value="Not started" selected="true">
+										Not Started
+									</option>
+									<option value="In Progress">
+										In Progress
+									</option>
+									<option value="Completed">
+										Completed
+									</option>
+								</select>
+							</td>
+							<td>
+								<select id="prio" name="prio">
+									<option value="Low">Low</option>
+									<option value="Medium">Medium</option>
+									<option value="High">High</option>
+								</select>
+							</td>
+							<td>
+								<button type="submit" id="submitBtn" class="table-button">
+									Add
+								</button>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</section>
+		</main>
 
-			<!--FOOTER-->
-			<footer>
-				<p>&copy; 2025 Task Handler</p>
-			</footer>
-		</div>
-	</body>
+		<!--FOOTER-->
+		<footer>
+			<p>&copy; 2025 Task Handler</p>
+		</footer>
+	</div>
+</body>
+
 </html>
