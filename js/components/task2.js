@@ -234,123 +234,241 @@ sBtn.addEventListener('click', addSubTask);
 //tableBody.addEventListener('click', createSubRow);
 
 // New code to be able to change a task after its added
-const makeRowEditable = (row) => {
-	// Get all cells in the row
+// Forsok till att fa editerbara rader.
+// const makeRowEditable = (row) => {
+//
+// 	// Get all cells in the row
+//
 
-	if (document.querySelector('#inputRow') === row) {
-		return;
-	}
-	const cells = row.querySelectorAll('td');
+//
+// 	if (document.querySelector('#inputRow') === row) {
+//
+// 		return;
+//
+//	}
+//
+// 	const cells = row.querySelectorAll('td');
+//
 
-	// Save the original values in case of cancel
-	const originalValues = [...cells].map((cell) => cell.textContent);
+//
+// 	// Save the original values in case of cancel
+//
+// 	const originalValues = [...cells].map((cell) => cell.textContent);
+//
 
-	// Replace each cell content with an input field
-	cells.forEach((cell, index) => {
-		if (index < cells.length - 1) {
-			const input = document.createElement('input');
-			input.type = 'text';
-			input.value = cell.textContent.trim();
-			cell.textContent = '';
-			cell.appendChild(input);
-		}
-	});
+//
+// 	// Replace each cell content with an input field
+//
+// 	cells.forEach((cell, index) => {
+//
+// 		if (index < cells.length - 1) {
+//
+// 			const input = document.createElement('input');
+//
+// 			input.type = 'text';
+//
+// 			input.value = cell.textContent.trim();
+//
+// 			cell.textContent = '';
+//
+// 			cell.appendChild(input);
+//
+//		}
+//
+// 	});
+//
 
-	// Add Save and Cancel buttons
-	const actionCell = cells[cells.length - 1];
-	actionCell.innerHTML = '';
+//
+// 	// Add Save and Cancel buttons
+//
+// 	const actionCell = cells[cells.length - 1];
+//
+// 	actionCell.innerHTML = '';
+//
 
-	const saveButton = document.createElement('button');
-	saveButton.textContent = 'Save';
-	saveButton.className = 'table-button';
+//
+// 	const saveButton = document.createElement('button');
+//
+// 	saveButton.textContent = 'Save';
+//
+// 	saveButton.className = 'table-button';
+//
 
-	const cancelButton = document.createElement('button');
-	cancelButton.textContent = 'Cancel';
-	cancelButton.className = 'table-button';
-	cancelButton.style.background = 'grey';
+//
+// 	const cancelButton = document.createElement('button');
+//
+// 	cancelButton.textContent = 'Cancel';
+//
+// 	cancelButton.className = 'table-button';
+//
+// 	cancelButton.style.background = 'grey';
+//
 
-	actionCell.appendChild(saveButton);
-	actionCell.appendChild(cancelButton);
+//
+// 	actionCell.appendChild(saveButton);
+//
+// 	actionCell.appendChild(cancelButton);
+//
 
-	const removeTaskObject = {
-		Task: originalValues[0],
-		Deadline: originalValues[2],
-		Status: originalValues[3],
-		Prio: originalValues[4],
-	};
+//
+// 	const removeTaskObject = {
+//
+// 		Task: originalValues[0],
+//
+// 		Deadline: originalValues[2],
+//
+// 		Status: originalValues[3],
+//
+// 		Prio: originalValues[4],
+//
+// 	};
+//
 
-	const keys = ['Task', '+', 'Deadline', 'Status', 'Prio'];
+//
+// 	const keys = ['Task', '+', 'Deadline', 'Status', 'Prio'];
+//
 
-	let inputData = [];
+//
+// 	let inputData = [];
+//
 
-	// Save Changes
-	saveButton.addEventListener('click', () => {
-		cells.forEach((cell, index) => {
-			if (index < cells.length - 1) {
-				const input = cell.querySelector('input');
+//
+// 	// Save Changes
+//
+// 	saveButton.addEventListener('click', () => {
+//
+// 		cells.forEach((cell, index) => {
+//
+// 			if (index < cells.length - 1) {
+//
+// 				const input = cell.querySelector('input');
+//
 
-				if (input && input.value === '') {
-					const key = keys[index];
+//
+// 				if (input && input.value === '') {
+//
+// 					const key = keys[index];
+//
 
-					alert(`${key} cant be empty.`);
-					cell.textContent = originalValues[index];
+//
+// 					alert(`${key} cant be empty.`);
+//
+// 					cell.textContent = originalValues[index];
+//
 
-					return;
-				} else {
-					cell.textContent = input.value;
-					inputData.push(input.value);
-				}
-			}
-		});
+//
+// 					return;
+//
+// 				} else {
+//
+// 					cell.textContent = input.value;
+//
+// 					inputData.push(input.value);
+//
+//				}
+//
+//	}
+//
+// 		});
+//
 
-		const taskObject = {
-			Task: inputData[0],
-			Deadline: inputData[2],
-			Status: inputData[3],
-			Prio: inputData[4],
-		};
+//
+// 		const taskObject = {
+//
+// 			Task: inputData[0],
+//
+// 			Deadline: inputData[2],
+//
+// 			Status: inputData[3],
+//
+// 			Prio: inputData[4],
+//
+// 		};
+//
 
-		// Checks for empty string values
-		const hasEmptyFields = Object.values(taskObject).some(
-			(value) => value === '' || value === '+'
-		);
+//
+// 		// Checks for empty string values
+//
+// 		const hasEmptyFields = Object.values(taskObject).some(
+//
+// 			(value) => value === '' || value === '+'
+//
+// 		);
+//
 
-		console.log('hasEmptyFields', hasEmptyFields);
+//
+// 		console.log('hasEmptyFields', hasEmptyFields);
+//
 
-		if (!hasEmptyFields) {
-			removeFromStorage(removeTaskObject);
-			addToStorage(taskObject);
-		}
+//
+// 		if (!hasEmptyFields) {
+//
+// 			removeFromStorage(removeTaskObject);
+//
+// 			addToStorage(taskObject);
+//
+//		}
+//
 
-		// Restore original buttons
-		actionCell.innerHTML = '';
-		actionCell.appendChild(createButton(row));
-	});
+//
+// 		// Restore original buttons
+//
+// 		actionCell.innerHTML = '';
+//
+// 		actionCell.appendChild(createButton(row));
+//
+// 	});
+//
 
-	// Cancel Changes
-	cancelButton.addEventListener('click', () => {
-		cells.forEach((cell, index) => {
-			if (index < cells.length - 1) {
-				cell.textContent = originalValues[index];
-			}
-		});
+//
+// 	// Cancel Changes
+//
+// 	cancelButton.addEventListener('click', () => {
+//
+// 		cells.forEach((cell, index) => {
+//
+// 			if (index < cells.length - 1) {
+//
+// 				cell.textContent = originalValues[index];
+//
+//			}
+//
+// 		});
+//
 
-		// Restore original buttons
-		actionCell.innerHTML = '';
-		actionCell.appendChild(createButton(row));
-	});
-};
+//
+// 		// Restore original buttons
+//
+// 		actionCell.innerHTML = '';
+//
+// 		actionCell.appendChild(createButton(row));
+//
+// 	});
+//
+// };
+//
 
-// Add click listener to task name cells
-tableBody.addEventListener('click', (event) => {
-	const target = event.target;
+//
+// // Add click listener to task name cells
+//
+// tableBody.addEventListener('click', (event) => {
+//
+// 	const target = event.target;
+//
 
-	// Check if the clicked cell is a task name
-	if (target.tagName === 'TD' && target.cellIndex === 0) {
-		const row = target.parentElement;
-		makeRowEditable(row);
-	}
-});
+//
+// 	// Check if the clicked cell is a task name
+//
+// 	if (target.tagName === 'TD' && target.cellIndex === 0) {
+//
+// 		const row = target.parentElement;
+//
+// 		makeRowEditable(row);
+//
+//	}
+//
+// });
+//
 
 // For initilizing the app with tasks from storage
 document.addEventListener('DOMContentLoaded', initApp);
