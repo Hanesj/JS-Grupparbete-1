@@ -128,7 +128,10 @@ const createSubTaskRow = (row) => {
 };
 
 const addSubTask = (e) => {
-	//console.log(e.target.parentElement.parentElement);
+	console.log(
+		e.target.parentElement.parentElement.previousSibling.children[0]
+			.textContent
+	);
 	const newRow = document.createElement('tr');
 	const subAllInput = {
 		Task: sTask.value,
@@ -139,7 +142,11 @@ const addSubTask = (e) => {
 	for (const [key, value] of Object.entries(subAllInput)) {
 		if (key === 'Deadline') {
 			subBtnCell = document.createElement('td');
-			subBtnCell.appendChild(document.createTextNode('subtask'));
+			subBtnCell.appendChild(
+				document.createTextNode(
+					`${e.target.parentElement.parentElement.previousSibling.children[0].textContent} - subtask`
+				)
+			);
 			newRow.appendChild(subBtnCell);
 		}
 		if (value === '') {
