@@ -73,17 +73,18 @@ const createButton = (row, values) => {
 	return button;
 };
 
-const createSubTaskBtn = (row) => {
+const createSubTaskBtn = () => {
 	//-------------------- Forsatt har-------------//
 	const button = document.createElement('button');
 	button.textContent = '+';
 	button.className = 'table-button';
 	button.style.background = '#E88437';
-	button.addEventListener('click', () => createSubTaskRow(row));
+	button.addEventListener('click', createSubTaskRow);
 	return button;
 };
 
 const createSubTaskRow = (row) => {
+	//console.log(row.target.parentElement.parentElement);
 	tableBody.querySelector('#inputRow').style.display = 'none';
 	const newRow = document.createElement('tr');
 	const tCell = document.createElement('td');
@@ -119,11 +120,15 @@ const createSubTaskRow = (row) => {
 	//}
 
 	newRow.setAttribute = `id = row${newRow.rowIndex}`;
-	tableBody.insertBefore(newRow, newRow.previousSibling);
-	console.log(row.firstChild.textContent);
+	//tableBody.insertBefore(newRow, newRow.previousSibling);
+	tableBody.insertBefore(
+		newRow,
+		row.target.parentElement.parentElement.nextSibling
+	);
 };
 
-const addSubTask = () => {
+const addSubTask = (e) => {
+	//console.log(e.target.parentElement.parentElement);
 	const newRow = document.createElement('tr');
 	const subAllInput = {
 		Task: sTask.value,
@@ -134,7 +139,7 @@ const addSubTask = () => {
 	for (const [key, value] of Object.entries(subAllInput)) {
 		if (key === 'Deadline') {
 			subBtnCell = document.createElement('td');
-			subBtnCell.appendChild(document.createTextNode(''));
+			subBtnCell.appendChild(document.createTextNode('subtask'));
 			newRow.appendChild(subBtnCell);
 		}
 		if (value === '') {
@@ -157,11 +162,35 @@ const addSubTask = () => {
 
 	btnCell.appendChild(createButton(newRow, subAllInput));
 	newRow.appendChild(btnCell);
-	tableBody.appendChild(newRow);
-	newRow.previousSibling.remove();
+	tableBody.insertBefore(
+		newRow,
+		e.target.parentElement.parentElement.nextSibling
+	);
+	//newRow.previousSibling.remove();
 
+	newRow.style.background = '#6c3bb4';
+
+	//newRow.subBtnCell.value =
+	//newRow.previousSibling.previousSibling.previousSibling.textContent;
+	//	console.log(
+	//		newRow.previousSibling.previousSibling.previousSibling.childNodes[0]
+	//			.textContent
+	//	);
+	//console.log(tableBody);
+
+	e.target.parentElement.parentElement.remove();
+
+	//	const hasEmptyFields = Object.values(subAllInput).some(
+	//		(value) => value === ''
+	//	);
+	//
+	//	if (!hasEmptyFields) {
+	//		// Add the task to storage
+	//		addToStorage(subAllInput);
+	//	}
+	//
 	inputRow.style.display = '';
-	tableBody.insertBefore(inputRow, newRow.nextSibling);
+	tableBody.appendChild(inputRow);
 };
 
 // Skapar ny rad fran addtask med input fran huvudinputraden.
@@ -200,6 +229,10 @@ sBtn.addEventListener('click', addSubTask);
 // New code to be able to change a task after its added
 const makeRowEditable = (row) => {
 	// Get all cells in the row
+
+	if (document.querySelector('#inputRow') === row) {
+		return;
+	}
 	const cells = row.querySelectorAll('td');
 
 	// Save the original values in case of cancel
